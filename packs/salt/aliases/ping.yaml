@@ -1,0 +1,5 @@
+name: chatops.salt_test_ping
+action_ref: salt.client.test_ping
+formats:
+  - "salt ping {{target}}"
+  - "salt all ping"

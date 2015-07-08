@@ -6,7 +6,7 @@ from lib.base import SaltAction
 
 class SaltLocal(SaltAction):
 
-    def run(self, **kwargs):
+    def run(self, module, target, **kwargs):
         '''
         CLI Examples:
 
@@ -18,6 +18,14 @@ class SaltLocal(SaltAction):
         # failure.
         # Also "args" and "kwargs" action parameters are unused?
         # self.generate_package(cmd=cmd)
+        _cmd = module
+        self.generate_package('local', cmd=_cmd)
+        if kwargs['kwargs'] is not None:
+            self.data.update(arg['arg'])
+        if target is not None:
+        	target = target.replace('http://','')
+        	self.data['tgt'] = target
+
         request = self.generate_request()
         request.prepare_body(json.dumps(self.data), None)
         resp = Session().send(request, verify=True)

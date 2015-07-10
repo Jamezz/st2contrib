@@ -1,0 +1,4 @@
+name: chatops.salt_show_highstate
+action_ref: salt.client.show_highstate
+formats:
+  - "salt show highstate on {{target}}"

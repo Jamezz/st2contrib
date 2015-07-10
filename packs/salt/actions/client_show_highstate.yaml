@@ -1,0 +1,18 @@
+---
+description: Run Local Salt functions through Salt API
+enabled: true
+entry_point: local.py
+name: client.show_highstate
+parameters:
+  module:
+    default: state.show_highstate
+    immutable: true
+    type: string
+  target:
+    default: "*"
+    type: string
+  kwargs:
+    description: 'Key Pair arguments to pass to the module'
+    type: object
+    required: false
+runner_type: run-python

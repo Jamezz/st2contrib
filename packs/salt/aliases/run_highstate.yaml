@@ -1,0 +1,4 @@
+name: chatops.salt_run_highstate
+action_ref: salt.client.highstate
+formats:
+  - "salt run highstate on {{target}}"
